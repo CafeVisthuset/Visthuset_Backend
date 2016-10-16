@@ -13,9 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
-
+from django.http.response import HttpResponse
+from Visthuset import views
+from Visthuset.views import LandingView
+    
 urlpatterns = [
+    url(r'^$', LandingView.as_view(), name = 'landing'),
+    #url(r'^docs/$', include('docs.urls')),
+    #url(r'^booking/$', include('booking.urls')),
     url(r'^admin/', admin.site.urls),
 ]
